@@ -1,14 +1,12 @@
-
+// Enumération des types
 const ElementType = Object.freeze({
     INGREDIENT: 'INGREDIENT',
     ALLERGENE: 'ALLERGENE',
     ADDITIF: 'ADDITIF'
 });
 
-
-
-class Element{
-
+// Classe mère
+class Element {
     constructor(nom, valeur, unité) {
         this.nom = nom;
         this.valeur = valeur;
@@ -16,55 +14,34 @@ class Element{
     }
 }
 
+// Classes filles (pas besoin d'attributs supplémentaires)
+class Ingredient extends Element {}
+class Allergene extends Element {}
+class Additif extends Element {}
 
-class Ingredient extends Element{
-    constructor(nom, valeur, unité, milligramme, microgramme) {
-        super(nom, valeur, unité);
-        this.milligramme = milligramme;
-        this.microgramme = microgramme;
-    }
-}   
-
-class Allergene extends Element{        
-    constructor(nom, valeur, unité, milligramme, microgramme) {
-        super(nom, valeur, unité);
-        this.milligramme = milligramme;
-        this.microgramme = microgramme;
-    }
-}
-
-class Additif extends Element{
-    constructor(nom, valeur, unité, milligramme, microgramme) {
-        super(nom, valeur, unité);
-        this.milligramme = milligramme;
-        this.microgramme = microgramme;
-    }
-}
-
-
+// Factory
 class ElementFactory {
-    static creer(type, nom, valeur, unité, milligramme, microgramme) {
+    static creer(type, nom, valeur, unité) {
         switch (type) {
             case ElementType.INGREDIENT:
-                return new Ingredient(nom, valeur, unité, milligramme, microgramme);
+                return new Ingredient(nom, valeur, unité);
             case ElementType.ALLERGENE:
-                return new Allergene(nom, valeur, unité, milligramme, microgramme);
+                return new Allergene(nom, valeur, unité);
             case ElementType.ADDITIF:
-                return new Additif(nom, valeur, unité, milligramme, microgramme);
+                return new Additif(nom, valeur, unité);
             default:
-                return null;
+                throw new Error("Type d'élément non reconnu");
         }
     }
 }
 
+//-------------------------------------------------------------------
 
-//-------------------------------------------------------------------------
-
-const sucre = ElementFactory.creer(ElementType.INGREDIENT, "Sucre", 10, "g", 10000, 10000000);
+const sucre = ElementFactory.creer(ElementType.INGREDIENT, "Sucre", 10, "g");
 console.log(sucre);
 
-const gluten = ElementFactory.creer(ElementType.ALLERGENE, "Gluten", 0.5, "g", 500, 500000);
+const gluten = ElementFactory.creer(ElementType.ALLERGENE, "Gluten", 500, "mg");
 console.log(gluten);
 
-const e330 = ElementFactory.creer(ElementType.ADDITIF, "Acide citrique (E330)", 0.1, "g", 100, 100000);
+const e330 = ElementFactory.creer(ElementType.ADDITIF, "Acide citrique (E330)", 100, "µg");
 console.log(e330);
