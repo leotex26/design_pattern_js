@@ -14,7 +14,7 @@ class Element {
     }
 }
 
-// Classes filles (pas besoin d'attributs supplémentaires)
+// Classes filles 
 class Ingredient extends Element {}
 class Allergene extends Element {}
 class Additif extends Element {}
