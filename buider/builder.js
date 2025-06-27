@@ -1,3 +1,7 @@
+const Produit = require('./models/Produit');
+
+
+
 class ProduitBuilder {
 
 
@@ -41,6 +45,11 @@ class ProduitBuilder {
     }
 
 
+    build() {
+        return this.produit;
+    }
 
 }
 
+
+module.exports = ProduitBuilder;
