@@ -30,7 +30,7 @@ class ElementFactory {
             case ElementType.ADDITIF:
                 return new Additif(nom, valeur, unité);
             default:
-                throw new Error("Type d'élément non reconnu");
+                return null;
         }
     }
 }
