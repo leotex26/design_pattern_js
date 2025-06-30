@@ -8,6 +8,24 @@ class Produit {
         this.allergenes = [];
         this.additifs = [];
     }
-}
+
+
+
+ addIngredient(ingredient) {
+    this.ingredients.push(ingredient);
+    return this;
+ }
+
+ addAllergene(allergene) {
+    this.allergenes.push(allergene);
+    return this;
+ }
+
+ addAdditif(additif) {
+    this.additifs.push(additif);
+    return this;
+ }
+
+    }
 
 module.exports = Produit;

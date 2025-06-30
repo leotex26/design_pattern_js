@@ -46,6 +46,19 @@ class ProduitBuilder {
 
 
     build() {
+        if (!this.produit.nom) {
+            throw new Error('Nom is required');
+        }
+        if (!this.produit.grade) {
+            throw new Error('Grade is required');
+        }
+        if (!this.produit.categorie) {
+            throw new Error('Categorie is required');
+        }
+        if (!this.produit.marque) {
+            throw new Error('Marque is required');
+        }
+
         return this.produit;
     }
 
